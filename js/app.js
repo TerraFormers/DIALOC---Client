@@ -8,7 +8,7 @@ function start() {
   addListeners();
   log("You can always log here...");
   // DomManager.createContainer(document.body);
-}
+}//
 
 // a one single function that holds multiple listeners, to be called once
 function addListeners() {
