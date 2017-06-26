@@ -58,6 +58,7 @@ function initialize() {
     proxyHost: proxyUrl
   })
   setInterval('update()', 50)
+  earth1.setZoom(2.05)
 }
 
 function actionHandler(action) {
@@ -77,6 +78,10 @@ function logAntipodes(a, b) {
     console.log(a, realGeoAntipode(b))
   }
   comparison = [a, b]
+  console.log()
+  let formatLocation = ` ${a[0].toFixed(4)}, ${a[1].toFixed(4)}`
+  $('#current-location').text(formatLocation)
+  console.log(zoom)
 }
 
 function realGeoAntipode(antip) {
