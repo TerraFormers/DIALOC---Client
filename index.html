@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html> 
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -24,14 +24,15 @@
         <span class="title"> DIALO</span>C</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons red-text">menu</i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a class="teal-text font-source about" href="about.html">about</a></li>
-        <li><a class="teal-text font-source favorites" href="favorites.html">favorites</a></li>
-        <li><a class="teal-text font-source account" href="user.html">account</a></li>
+        <li><a class="teal-text font-source about menu-link" href="about.html">about</a></li>
+        <li><a class="teal-text font-source favorites menu-link" href="favorites.html">favorites</a></li>
+        <li><a class="teal-text font-source account menu-link" href="user.html">account</a></li>
         <li><a class="btn-large waves-effect waves-light login-btn cyan darken-3" href="login.html">LOGIN</a></li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a class="teal-text font-source about" href="about.html">about</a></li>
-        <li><a class="teal-text font-source favorites" href="favorites.html">favorites</a></li>
+        <li><a class="teal-text font-source " href="about.html">about</a></li>
+        <li><a class="teal-text font-source " href="favorites.html">favorites</a></li>
+        <li><a class="teal-text font-source " href="user.html">account</a></li>
         <li><a class="btn-large waves-effect waves-light " href="login.html">LOGIN</a></li>
       </ul>
     </div>
@@ -46,37 +47,77 @@
         <div class="cross"></div>
       </div>
     </section>
-
   </main>
 
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+
+
+
+      <div class="row">
+        <div class="col s6 modal-loc modal-loc-a">
+          <div class="card large">
+            <div class="card-image">
+              <img class="modal-img modal-img-original" src="images/denver.jpg">
+              <h6 class="card-title">Card Title</h6>
+            </div>
+            <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+        <div class="col s6 modal-loc modal-loc-b">
+          <div class="card large">
+            <div class="card-image">
+              <img class="modal-img modal-img-antipode" src="images/da_ocean.jpg">
+              <h6 class="card-title">Card Title</h6>
+            </div>
+            <div class="card-content">
+              <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+            </div>
+            <div class="card-action">
+              <a href="#">This is a link</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+    <div class="modal-footer">
+      <!-- <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
+    </div>
+  </div>
 
 
   <footer class="page-footer light-blue lighten-4 foota">
-
     <div class="container">
       <section class="row center form">
-        <p class="blue-text">current location:<span id="current-location" class="red-text"> 39.7578, -105.0072</span></p>
-        <label class="col s5 left" for="coordinates">enter a location</label>
-          <input type="text" class="white col s10 right font-source" id="input-latlong" name="coordinates" value="39.7578, -105.0072">
-            <a class="btn-floating btn-large waves-effect waves-light red  " id="btn-latlong"><i class="material-icons">location_on</i></a>
-      </section>
 
-      <!-- <div class="row">
-        <div class="col s12">
-          <h5 class="white-text">dialoc</h5>
-          <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        </div>
-      </div> -->
+        <p class="blue-text current-location font-source">selected location:<span id="current-location" class="red-text"> 44.9999, 5.9999</span> <strong>⚭</strong></p>
+
+        <input type="text" class="white col s8 right font-source" id="input-latlong" name="coordinates" value="39.7578, -105.0072">
+
+        <a class="btn-floating btn-large waves-effect waves-light red tooltipped modal-btn" data-target="modal1" data-position="top" data-delay="50" data-tooltip="select antipode"><i class="material-icons yellow-text">star</i></a>
+
+        <a class="btn-floating btn-large waves-effect waves-light red  tooltipped" id="btn-latlong" data-position="top" data-delay="50" data-tooltip="find location"><i class="material-icons blue-text text-lighten-2">location_on</i></a>
+        
+      </section>
     </div>
     <div class="footer-copyright">
       <div class="container center">
-        © 2017 Fahad Haidari, Andrew Eskenazi, Robert Puls, & Will Meier | Galvanize Web Development - g51
+        © 2017 Fahad Haidari, Andrew Eskenazi, Robert Puls, & Will Meier ⚭
       </div>
     </div>
   </footer>
 
-<script src="js/app.js"></script>
-<script src="js/antipode.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/antipode.js"></script>
+  <script src="js/mapsdata.js"></script>
 </body>
 
 </html>

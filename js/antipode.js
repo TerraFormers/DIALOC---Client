@@ -7,8 +7,6 @@ $(() => {
     let long = parseFloat(latlong[1])
     center = [lat, long]
     earth1.setView(center)
-    console.log(center)
-    console.log(realGeoAntipode(antip))
     update()
   })
 })
@@ -19,6 +17,8 @@ let zoom = 2
 let center = [45.0, 6.0]
 let comparison = []
 let antip = antipode(center)
+var originalLocation;
+var antipodeLocation;
 const validLatLong = new RegExp('^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)\s*,\s*[-+]?(180(\.0+)?|((‌​1[0-7]\d)|([1-9]?\d)‌​)(\.\d+)?)$')
 
 function antipode(coord) {
@@ -58,7 +58,7 @@ function initialize() {
     proxyHost: proxyUrl
   })
   setInterval('update()', 50)
-  earth1.setZoom(2.05)
+  earth1.setZoom(1)
 }
 
 function actionHandler(action) {
@@ -75,13 +75,14 @@ function actionHandler(action) {
 
 function logAntipodes(a, b) {
   if ([a, b] != comparison) {
-    console.log(a, realGeoAntipode(b))
+    originalLocation = numPairCoords(a)
+    antipodeLocation = numPairCoords(realGeoAntipode(b))
+    console.log([originalLocation, antipodeLocation])
+    $('#current-location').text(strPairCoords(originalLocation))
+    $('.modal-loc-a h6').text(strPairCoords(originalLocation))
+    $('.modal-loc-b h6').text(strPairCoords(antipodeLocation))
   }
   comparison = [a, b]
-  console.log()
-  let formatLocation = ` ${a[0].toFixed(4)}, ${a[1].toFixed(4)}`
-  $('#current-location').text(formatLocation)
-  console.log(zoom)
 }
 
 function realGeoAntipode(antip) {
@@ -89,4 +90,16 @@ function realGeoAntipode(antip) {
     antip[1] += 360
   }
   return antip
+}
+
+function numPairCoords(arr) {
+  return arr.map((a) => {
+    return parseFloat(a.toFixed(4))
+  })
+}
+
+function strPairCoords(arr) {
+  return arr.map((a) => {
+    return ` ${a}`
+  }).join(',')
 }
