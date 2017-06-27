@@ -5,6 +5,6 @@ $(() => {
       "email": $("#email").val(),
       "password": $("#password").val()
     };
-    $.post("https://dialocserver-api.herokuapp.com/auth/signup", newUser)
+    $.post("https://dialocserver-api.herokuapp.com/auth/signup", newUser).then(() => window.location.href = "user.html");
   });
 });
