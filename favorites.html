@@ -9,8 +9,6 @@
   <link href="https://fonts.googleapis.com/css?family=Comfortaa|Source+Code+Pro" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
   <link rel="stylesheet" href="styles/main.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
 
  <title>DIALOC</title>
 </head>
@@ -41,9 +39,15 @@
      <div class="row">
         <div id="favImage" class="col s12 row center"></div>
       </div>
-
-
-
+      <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>Info</h4>
+      <p id="modalBody">A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Close</a>
+    </div>
+  </div>
    </section>
 
  </main>
@@ -68,7 +72,8 @@
       </div>
     </div>
   </footer>
-
+ <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
  <script src="js/app.js"></script>
  <script src="js/favorites.js"></script>
 </body>
