@@ -50,7 +50,6 @@ main {
 #input-latlong {
   padding: .5em;
   border: 1px solid red;
-  border-radius: 10px;
   margin: 0 3em 1em -1em;
 }
 
@@ -180,4 +179,8 @@ nav {
 
 #earth_div2 {
   left: 50%;
+}
+
+.roundedBorder{
+  border-radius: 5px!important;
 }

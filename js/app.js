@@ -17,9 +17,14 @@ $(() => {
     ready: function(modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
 
     }
+
   });
 
   $('.tap-target').tapTarget('open');
+
+
+
+
 
 
   // menuHover('about', 'info_outline')

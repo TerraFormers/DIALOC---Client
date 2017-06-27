@@ -9,6 +9,8 @@ $(() => {
     earth1.setView(center)
     update()
   })
+
+
 })
 
 let earth1
@@ -41,6 +43,7 @@ function update() {
     zoom = earth2.getZoom()
     earth1.setZoom(zoom)
   }
+
 }
 
 function initialize() {
@@ -59,6 +62,8 @@ function initialize() {
   })
   setInterval('update()', 50)
   earth1.setZoom(1)
+
+
 }
 
 function actionHandler(action) {
@@ -68,7 +73,9 @@ function actionHandler(action) {
       clearTimeout(timer)
     }
     timer = setTimeout(function() {
+
       return logAntipodes(center, antip)
+
     }, 50)
   })
 }
@@ -103,3 +110,9 @@ function strPairCoords(arr) {
     return ` ${a}`
   }).join(',')
 }
+
+
+
+
+
+// image.onload = function() {var canvas = document.createElement("canvas");canvas.width = image.width;canvas.height = image.height;var context = canvas.getContext("2d");context.drawImage(image, 0, 0);imageData = context.getImageData(mouse_x, mouse_y, 1, 1).data;//do something with imageData}
