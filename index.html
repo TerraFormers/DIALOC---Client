@@ -39,6 +39,7 @@
   </nav>
 
   <main class="main-index">
+
     <section class=" antips">
       <div id="earth_div1">
         <div class="cross"></div>
@@ -47,49 +48,53 @@
         <div class="cross"></div>
       </div>
     </section>
+
   </main>
 
   <div id="modal1" class="modal">
     <div class="modal-content">
 
-
-
       <div class="row">
         <div class="col s6 modal-loc modal-loc-a">
           <div class="card large">
-            <div class="card-image">
-              <img class="modal-img modal-img-original" src="images/denver.jpg">
-              <h6 class="card-title">Card Title</h6>
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="modal-img modal-img-original activator" src="">
             </div>
             <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              <h6 class="card-title activator">Card Title<i class="material-icons right">more_vert</i></h6>
             </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+              <img class="modal-streetview-original" src="" alt="">
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
           </div>
         </div>
+
         <div class="col s6 modal-loc modal-loc-b">
           <div class="card large">
-            <div class="card-image">
-              <img class="modal-img modal-img-antipode" src="images/da_ocean.jpg">
-              <h6 class="card-title">Card Title</h6>
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="modal-img modal-img-antipode activator" src="">
             </div>
             <div class="card-content">
-              <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+              <h6 class="card-title activator">Card Title<i class="material-icons right">more_vert</i></h6>
             </div>
-            <div class="card-action">
-              <a href="#">This is a link</a>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+              <img class="modal-streetview-antipode" src="" alt="">
+              <p>Here is some more information about this product that is only revealed once clicked on.</p>
             </div>
           </div>
         </div>
+
       </div>
 
 
 
     </div>
-    <div class="modal-footer">
+    <div class="modal-footer center">
       <!-- <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
+      <a class="btn-floating btn-large waves-effect waves-light red tooltipped add-fav-btn center" data-position="top" data-delay="50" data-tooltip="add to favorites"><i class="material-icons yellow-text">star</i></a>
     </div>
   </div>
 
@@ -100,12 +105,12 @@
 
         <p class="blue-text current-location font-source">selected location:<span id="current-location" class="red-text"> 44.9999, 5.9999</span> <strong>⚭</strong></p>
 
-        <input type="text" class="white col s8 right font-source" id="input-latlong" name="coordinates" value="39.7578, -105.0072">
+        <input type="text" class="white col s8 right font-source roundedBorder" id="input-latlong" name="coordinates" value="39.7578, -105.0072">
 
-        <a class="btn-floating btn-large waves-effect waves-light red tooltipped modal-btn" data-target="modal1" data-position="top" data-delay="50" data-tooltip="select antipode"><i class="material-icons yellow-text">star</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red tooltipped modal-btn" data-target="modal1" data-position="top" data-delay="50" data-tooltip="select antipode"><i class="material-icons ">visibility</i></a>
 
-        <a class="btn-floating btn-large waves-effect waves-light red  tooltipped" id="btn-latlong" data-position="top" data-delay="50" data-tooltip="find location"><i class="material-icons blue-text text-lighten-2">location_on</i></a>
-        
+        <a class="btn-floating btn-large waves-effect waves-light red  tooltipped" id="btn-latlong" data-position="top" data-delay="50" data-tooltip="find location"><i class="material-icons">location_on</i></a>
+
       </section>
     </div>
     <div class="footer-copyright">
