@@ -181,3 +181,7 @@ nav {
 #earth_div2 {
   left: 50%;
 }
+
+.roundedBorder{
+  border-radius: 5px!important;
+}
