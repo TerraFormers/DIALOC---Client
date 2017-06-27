@@ -45,7 +45,7 @@ $(() => {
 
 
     $('.modal').modal();
-    $(".activator").on("click", function() {
+    $(".col").on("click", function() {
       console.log(this);
       $("#modalBody").html("");
       $("#modalBody").html(`Enter Info Here`);
