@@ -1,7 +1,5 @@
 $(() => {
-  $('form').submit((event) => {
-
-    event.preventDefault();
+  $('#createUser').on("click", () => {
 
     const $name = $('#name-input').val();
     const $email = $('#email').val();
@@ -15,7 +13,7 @@ $(() => {
 
     $.post('http://localhost:3000/auth/signup', formBody).then((response) => {
         console.log(response);
-        // $(location).attr('href', './index.html');
+        $(location).attr('href', `/user.html?id=${response.id}`);
     }).catch((error) => {
         console.log('Error!, Invalid User Entry')
     });
