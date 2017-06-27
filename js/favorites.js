@@ -21,7 +21,6 @@ $(() => {
     for (let i = 0; i < 2; i++) {
       let e = {lat: homeCoords[i][0], lng: homeCoords[i][1]};
 
-      let infoWindow = new google.maps.InfoWindow();
       let maxZoomService = new google.maps.MaxZoomService();
       maxZoomService.getMaxZoomAtLatLng(e, function(response) {
         maxZoom = response.zoom;
