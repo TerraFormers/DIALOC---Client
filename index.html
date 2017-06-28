@@ -12,8 +12,10 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
   <script src="https://www.webglearth.com/v2/api.js"></script>
-  <script async defer
-     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4EIZ4N10IMZvN62oGjUEhEBajNsvRINA&callback=initMap"> </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4EIZ4N10IMZvN62oGjUEhEBajNsvRINA&callback=initMap">
+  </script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBNBysOcc4ZOhnnHVW_LSMSYBgn9p1YE4&libraries=places"></script>
+
 
   <title>DIALOC</title>
 </head>
@@ -53,50 +55,45 @@
 
   </main>
 
-  <div id="modal1" class="modal">
-    <div class="modal-content">
+  <div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content center">
 
-      <div class="row">
-        <div class="col s6 modal-loc modal-loc-a">
-          <div class="card large">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="modal-img-sat modal-img-original activator" src="a">
-            </div>
-            <div class="card-content">
-              <h6 class="card-title activator">Card Title<i class="material-icons right">more_vert</i></h6>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-              <img class="modal-streetview-original" src="" alt="">
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
-            </div>
-          </div>
+      <section class="modal-original-section modal-half">
+        <h1>⚭</h1>
+        <h4 class="font-source">original</h4>
+        <div class="modal-img-original-contain">
+          <img class="modal-img-sat modal-img-original activator circle " src="images/earth.jpeg">
         </div>
-
-        <div class="col s6 modal-loc modal-loc-b">
-          <div class="card large">
-            <div class="card-image waves-effect waves-block waves-light">
-              <img class="modal-img-sat modal-img-antipode activator" src="a">
-            </div>
-            <div class="card-content">
-              <h6 class="card-title activator">Card Title<i class="material-icons right">more_vert</i></h6>
-            </div>
-            <div class="card-reveal">
-              <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-              <img class="modal-streetview-antipode" src="" alt="">
-              <p>Here is some more information about this product that is only revealed once clicked on.</p>
-            </div>
-          </div>
+        <div class="original-title">
+          <div class="font-source original-coords"></div>
+          <div class="font-source original-address address"></div>
         </div>
+        <div class="modal-streetview-original-contain">
+          <img class="modal-img-streetview modal-streetview-original activator circle " src="images/earth.jpeg">
+        </div>
+        <h1>⚭</h1>
+      </section>
 
-      </div>
-
-
+      <section class="modal-antipode-section modal-half">
+        <h1>⚭</h1>
+        <h4 class="font-source">antipode</h4>
+        <div class="modal-img-antipode-contain">
+          <img class="modal-img-sat modal-img-antipode activator circle " src="images/earth.jpeg">
+        </div>
+        <div class="antipode-title">
+          <div class="font-source antipode-coords"></div>
+          <div class="font-source antipode-address address"></div>
+        </div>
+        <div class="modal-streetview-antipode-contain">
+          <img class="modal-img-streetview modal-antipode-original activator circle " src="images/earth.jpeg">
+        </div>
+        <h1>⚭</h1>
+      </section>
 
     </div>
-    <div class="modal-footer center">
-      <!-- <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a> -->
-      <a class="btn-floating btn-large waves-effect waves-light red tooltipped add-fav-btn center" data-position="top" data-delay="50" data-tooltip="add to favorites"><i class="material-icons yellow-text">star</i></a>
+    <div class="modal-footer center" style="position:fixed;bottom:5%;">
+      <a class="modal-action modal-close btn-floating btn-large waves-effect waves-light red tooltipped add-fav-btn right" data-position="left" data-delay="50" data-tooltip="add to favorites"><i class="material-icons yellow-text ">star</i></a>
+
     </div>
   </div>
 
@@ -107,11 +104,12 @@
 
         <p class="blue-text current-location font-source">selected location:<span id="current-location" class="red-text"> 44.9999, 5.9999</span> <strong>⚭</strong></p>
 
-        <input type="text" class="white col s8 right font-source roundedBorder" id="input-latlong" name="coordinates" value="39.7578, -105.0072">
+        <input type="text" class="white col s8 right font-source roundedBorder tooltipped" id="input-latlong" name="coordinates" value="39.7578, -105.0072" data-position="left" data-delay="20" data-tooltip="input location" placeholder="location">
 
-        <a class="btn-floating btn-large waves-effect waves-light red tooltipped modal-btn" data-target="modal1" data-position="top" data-delay="50" data-tooltip="select antipode"><i class="material-icons ">visibility</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red tooltipped modal-btn" data-target="modal1" data-position="top" data-delay="20" data-tooltip="select antipode"><i class="material-icons ">visibility</i></a>
 
-        <a class="btn-floating btn-large waves-effect waves-light red  tooltipped" id="btn-latlong" data-position="top" data-delay="50" data-tooltip="find location"><i class="material-icons">location_on</i></a>
+
+        <a class="btn-floating btn-large waves-effect waves-light red  tooltipped" id="btn-latlong" data-position="top" data-delay="20" data-tooltip="find location"><i class="material-icons">location_on</i></a>
 
       </section>
     </div>

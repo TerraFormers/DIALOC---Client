@@ -1,11 +1,22 @@
 $(() => {
+
   initialize()
   $('#btn-latlong').click(function() {
-    // e.preventDefault()
-    let latlong = $('#input-latlong').val().split(',')
-    let lat = parseFloat(latlong[0])
-    let long = parseFloat(latlong[1])
-    center = [lat, long]
+    const validLatLong = new RegExp(/^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$/)
+    let input = $('#input-latlong').val()
+    // console.log(input)
+    if(input.match(validLatLong)){
+      const latlong = input.split(',')
+      const lat = parseFloat(latlong[0])
+      const long = parseFloat(latlong[1])
+      center = [lat, long]
+    }else{
+
+    }
+    // const latlong = input.split(',')
+    // const lat = parseFloat(latlong[0])
+    // const long = parseFloat(latlong[1])
+    // center = [lat, long]
     earth1.setView(center)
     update()
   })
@@ -16,12 +27,12 @@ $(() => {
 let earth1
 let earth2
 let zoom = 2
-let center = [45.0, 6.0]
+let center = [39.7578, -105.0072]
 let comparison = []
 let antip = antipode(center)
 var originalLocation;
 var antipodeLocation;
-const validLatLong = new RegExp('^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)\s*,\s*[-+]?(180(\.0+)?|((‌​1[0-7]\d)|([1-9]?\d)‌​)(\.\d+)?)$')
+// const validLatLong = new RegExp('^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)\s*,\s*[-+]?(180(\.0+)?|((‌​1[0-7]\d)|([1-9]?\d)‌​)(\.\d+)?)$')
 
 function antipode(coord) {
   return [-1 * coord[0], coord[1] - 180]
@@ -84,7 +95,7 @@ function logAntipodes(a, b) {
   if ([a, b] != comparison) {
     originalLocation = numPairCoords(a)
     antipodeLocation = numPairCoords(realGeoAntipode(b))
-    console.log([originalLocation, antipodeLocation])
+    // console.log([originalLocation, antipodeLocation])
     $('#current-location').text(strPairCoords(originalLocation))
     $('.modal-loc-a h6').text(strPairCoords(originalLocation))
     $('.modal-loc-b h6').text(strPairCoords(antipodeLocation))
@@ -101,7 +112,7 @@ function realGeoAntipode(antip) {
 
 function numPairCoords(arr) {
   return arr.map((a) => {
-    return parseFloat(a.toFixed(4))
+    return parseFloat(a.toFixed(6))
   })
 }
 
