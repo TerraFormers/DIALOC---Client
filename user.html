@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+  <script src="https://www.webglearth.com/v2/api.js"></script>
 
   <title>DIALOC</title>
 </head>
@@ -36,8 +37,15 @@
     </div>
   </nav>
 
-  <main>
+  <main class="center">
     <section class="container center">
+
+      <section class="earth-marker-container center">
+        <div class="center" id="earth_div_markers"></div>
+      </section>
+
+
+
       <div class="main-about-info row col s12 center">
         <h1 class="font-comforta symbol">⚭</h1>
         <h1 class="font-source teal-text">user</h1>
@@ -75,6 +83,7 @@
   </footer>
 
   <script src="js/app.js"></script>
+  <script src="js/user.js"></script>
 </body>
 
 </html>
