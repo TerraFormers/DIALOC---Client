@@ -19,7 +19,10 @@ $(() => {
     let maxZoom = 9;
 
     for (let i = 0; i < 2; i++) {
-      let e = {lat: homeCoords[i][0], lng: homeCoords[i][1]};
+      let e = {
+        lat: homeCoords[i][0],
+        lng: homeCoords[i][1]
+      };
 
       let maxZoomService = new google.maps.MaxZoomService();
       maxZoomService.getMaxZoomAtLatLng(e, function(response) {
@@ -38,7 +41,7 @@ $(() => {
                   <p class="red-text">${homeCoords[1]}</p>
                 </div>
               </a>`);
-          }
+        }
       });
     }
     count++;
