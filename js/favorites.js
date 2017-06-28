@@ -70,10 +70,10 @@ $(() => {
               </div>`)
           })
         } else {
-          let favsContainer = $('<div class=" row col s6 lesser-fav container roundedBorder "></div>')
+          let favsContainer = $('<div class=" lesser-fav container roundedBorder "></div>')
           $('.favs-container').append(favsContainer)
           urls.forEach((url) => {
-            favsContainer.append(`<div class="col s6">
+            favsContainer.append(`<div class="lesser-img-container">
               <img src="${url}" alt="" class="circle responsive-img favorite-img hero-img">
               <p class="red-text white roundedBorder">${coords.join(', ')}</p>
             </div>`)
