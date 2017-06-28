@@ -1,5 +1,5 @@
 $(() => {
-  initialize()
+  // initialize()
 
   let currentURL = window.location.href;
   let id = currentURL.slice(currentURL.indexOf("=") + 1);
@@ -8,15 +8,16 @@ $(() => {
     return [-1 * coord[0], coord[1] - 180]
   }
 
-  function initialize() {
+  function initialize(coords) {
     const earth = new WE.map('earth_div_markers')
     WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(earth)
 
-    let coords = [39.7578, -105.0072]
-    let antip = antipode(coords)
+    for (let coord of coords) {
+      let antip = antipode(coord)
 
-    var markerCustom = WE.marker(coords, '/images/bullet_orange.png', 8, 8).addTo(earth)
-    var markerCustom2 = WE.marker(antip, '/images/bullet_orange.png', 8, 8).addTo(earth)
+      var markerCustom = WE.marker(coord, '/images/bullet_orange.png', 8, 8).addTo(earth)
+      var markerCustom2 = WE.marker(antip, '/images/bullet_orange.png', 8, 8).addTo(earth)
+    }
 
     earth.setView([39.7578, -105.0072], .8);
   }
@@ -26,9 +27,13 @@ $(() => {
       [res[0].latitude, res[0].longitude],
       antipode([res[0].latitude, res[0].longitude])
     ])).then(() => addFavoriteImage([
-      [39.7578, -105.0072],
+      [50.7578, 105.0072],
       [-44.7584, 192.1819]
-    ]));
+    ])).then(() => initialize(
+      [
+        [39.7578, 105.0072],
+        [39.7578, -105.0072]
+      ]));
 
   function addFavoriteImage(homeCoords, hero = "col s5 amber lighten-5") {
     let imgURL = [];
