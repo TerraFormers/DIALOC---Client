@@ -184,3 +184,7 @@ nav {
 .roundedBorder{
   border-radius: 5px!important;
 }
+
+.hidden{
+  display: none;
+}
