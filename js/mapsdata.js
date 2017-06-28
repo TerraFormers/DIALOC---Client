@@ -15,7 +15,7 @@ $(() => {
     var src2 = `https://maps.googleapis.com/maps/api/streetview?size=400x400&location=${antipodeLocation}&fov=90&heading=235&pitch=10&key=${wmStreetViewKey}`
 
 
-    addSatImages()
+    addSatImages(originalLocation, antipodeLocation)
     findIMGsize(src1, 'original')
     findIMGsize(src2, 'antipode')
 
@@ -43,7 +43,7 @@ $(() => {
 
 
 
-function addSatImages() {
+function addSatImages(originalLocation, antipodeLocation) {
   let twoPoints = [originalLocation, antipodeLocation];
   let maxZoom = 9;
   for (let i in twoPoints) {
@@ -65,7 +65,7 @@ function getLocData(coords, el) {
     return loc
   }).then((locData) => {
     let info = locData.results
-    // console.log(info)
+    console.log(info)
     return renderLocAddress(info)
   }).then((address) => {
     el.text(address)
