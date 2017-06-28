@@ -9,6 +9,11 @@
   <link href="https://fonts.googleapis.com/css?family=Comfortaa|Source+Code+Pro" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/css/materialize.min.css">
   <link rel="stylesheet" href="styles/main.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
+  <script async defer
+     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4EIZ4N10IMZvN62oGjUEhEBajNsvRINA&callback=initMap"> </script>
+  <script src="https://www.webglearth.com/v2/api.js"></script>
 
  <title>DIALOC</title>
 </head>
@@ -37,8 +42,16 @@
  <main>
     <section >
 
-     <div class="row">
-        <div id="favImage" class="col s12 row center"></div>
+      <section class="earth-marker-container container center">
+        <div class="center" id="earth_div_markers_all"></div>
+      </section>
+
+
+     <div class="row center">
+        <div id="favImage" class="col s12 row center container">
+          <div class="hero hero-container col s12 roundedBorder "></div>
+          <div class="col s12  favs-container"></div>
+        </div>
       </div>
 
       <div id="modal1" class="modal modal-fixed-footer">
@@ -60,13 +73,6 @@
 
    <div class="container">
 
-
-     <!-- <div class="row">
-        <div class="col s12">
-          <h5 class="white-text">dialoc</h5>
-          <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        </div>
-      </div> -->
     </div>
     <div class="footer-copyright">
       <div class="container center">
@@ -74,11 +80,8 @@
       </div>
     </div>
   </footer>
- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.99.0/js/materialize.min.js"></script>
- <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4EIZ4N10IMZvN62oGjUEhEBajNsvRINA&callback=initMap"></script>
  <script src="js/app.js"></script>
+ <script src="js/mapsdata.js"></script>
  <script src="js/favorites.js"></script>
 </body>
 
