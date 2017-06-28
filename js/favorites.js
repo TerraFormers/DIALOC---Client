@@ -45,12 +45,12 @@ $(() => {
 
 
     $('.modal').modal();
-    $(".col").on("click", function() {
-      console.log(this);
-      $("#modalBody").html("");
-      $("#modalBody").html(`Enter Info Here`);
-    });
   }
+  $(".col").on("click", function() {
+    console.log(this);
+    $("#modalBody").html("");
+    $("#modalBody").html(`Enter Info Here`);
+  });
 
   addFavoriteImage([
     [39.7578, -105.0072],
