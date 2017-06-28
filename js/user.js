@@ -1,30 +1,39 @@
 $(() => {
-  initialize()
+  // initialize()
 
   let currentURL = window.location.href;
   let id = currentURL.slice(currentURL.indexOf("=") + 1);
 
-  function initialize() {
+  function antipode(coord) {
+    return [-1 * coord[0], coord[1] - 180]
+  }
+
+  function initialize(coords) {
     const earth = new WE.map('earth_div_markers')
     WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(earth)
 
-    function antipode(coord) {
-      return [-1 * coord[0], coord[1] - 180]
-    }
-    let coords = [39.7578, -105.0072]
-    let antip = antipode(coords)
+    for (let coord of coords) {
+      let antip = antipode(coord)
 
-    var markerCustom = WE.marker(coords, '/images/bullet_orange.png', 8, 8).addTo(earth)
-    var markerCustom2 = WE.marker(antip, '/images/bullet_orange.png', 8, 8).addTo(earth)
+      var markerCustom = WE.marker(coord, '/images/bullet_orange.png', 8, 8).addTo(earth)
+      var markerCustom2 = WE.marker(antip, '/images/bullet_orange.png', 8, 8).addTo(earth)
+    }
 
     earth.setView([39.7578, -105.0072], .8);
   }
 
   $.get(`https://dialocserver-api.herokuapp.com/users/${id}/antipodes`)
-    .then((res) => console.log(res)).then((res) => addFavoriteImage([
+    .then((res) => addFavoriteImage([
       [res[0].latitude, res[0].longitude],
-      [res[0].latitude, res[0].longitude]
-    ]));
+      antipode([res[0].latitude, res[0].longitude])
+    ])).then(() => addFavoriteImage([
+      [50.7578, 105.0072],
+      [-44.7584, 192.1819]
+    ])).then(() => initialize(
+      [
+        [39.7578, 105.0072],
+        [39.7578, -105.0072]
+      ]));
 
   function addFavoriteImage(homeCoords, hero = "col s5 amber lighten-5") {
     let imgURL = [];
@@ -42,7 +51,7 @@ $(() => {
         imgURL.push(`https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=${homeCoords[i].toString()}&zoom=${maxZoom}&size=350x350&key=AIzaSyAiB8Q6zW5qm1u2d5LKrT98udr4wbQKEuk`);
 
         if (i == 1) {
-          $("main").append(`
+          $("#favImage").append(`
             <a href="#modal1" class="roundedBorder lessImage ${hero} card-panel valign-wrapper activator">
                 <div class="col s6">
                   <img src="${imgURL[0]}" alt="" class="circle responsive-img favorite-img">
