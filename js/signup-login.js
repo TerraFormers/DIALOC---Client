@@ -1,4 +1,11 @@
 $(() => {
+  $.ajaxSetup({
+    crossDomain: true,
+    xhrFields: {
+      withCredentials: true
+    }
+  });
+
   $("#submit").on("click", function() {
     $("#failMessage").hide();
     let newUser = {
@@ -8,6 +15,6 @@ $(() => {
     };
     let path = this.dataset.page;
 
-    $.post(`https://dialocserver-api.herokuapp.com/auth/${path}`, newUser).then((res) => window.location.href = `user.html?id=${res.id}`).fail(() => $("#failMessage").show());
+    $.post(`https://dialocserver-api.herokuapp.com/auth/${path}`, newUser).then((res) => window.location.href = `user.html?id=${res.user.id}`).fail(() => $("#failMessage").show());
   });
 });
