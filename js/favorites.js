@@ -1,6 +1,8 @@
+
 $(() => {
-  let maxZoom = 9;
-  let maxZoomService = new google.maps.MaxZoomService();
+
+
+
   initialize()
 
   function initialize() {
@@ -107,10 +109,12 @@ $(() => {
     }
     function getSatURL(location) {
       return new Promise((resolve, reject) => {
+        let maxZoom = 9;
         let e = {
           lat: location[0],
           lng: location[1]
         };
+        let maxZoomService = new google.maps.MaxZoomService();
         maxZoomService.getMaxZoomAtLatLng(e, function(response) {
           maxZoom = response.zoom;
           let url = `https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=${location.toString()}&zoom=${maxZoom}&size=350x350&key=${rpSatKey}`
