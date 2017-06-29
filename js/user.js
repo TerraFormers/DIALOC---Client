@@ -1,4 +1,10 @@
 $(() => {
+  let splitToken = localStorage.token.split('.')
+  let thing = JSON.parse(atob(splitToken[1])).id
+  if(!window.location.href.includes('?')){
+    window.location.href += `?id=${thing}`
+  }
+  window.location
   $.ajaxSetup({
     crossDomain: true,
     headers: {
