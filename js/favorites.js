@@ -66,7 +66,7 @@ $(() => {
 
   function initialize(coords) {
     const earth = new WE.map('earth_div_markers_all')
-    WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(earth)
+    WE.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(earth)
 
     for (let coord of coords) {
       let antip = antipode(coord)
