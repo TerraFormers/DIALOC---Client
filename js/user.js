@@ -16,7 +16,7 @@ $(() => {
       let antip = antipode(coord)
 
       var markerCustom = WE.marker(coord, '/images/bullet_orange.png', 8, 8).addTo(earth)
-      var markerCustom2 = WE.marker(antip, '/images/bullet_orange.png', 8, 8).addTo(earth)
+      var markerCustom2 = WE.marker(antip, '/images/bullet_pink.png', 8, 8).addTo(earth)
     }
 
     earth.setView([39.7578, -105.0072], .8);
