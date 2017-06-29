@@ -5,8 +5,8 @@ $.ajaxSetup({
     'Content-Type': 'application/json; charset=utf-8'
   }
 });
-const splitToken = localStorage.token.split('.')
-const id = JSON.parse(atob(splitToken[1])).id
+// const splitToken = localStorage.token.split('.')
+// const id = JSON.parse(atob(splitToken[1])).id
 
 var wmStreetViewKey = 'AIzaSyCuPQR1KWE3uYIoml6bzBOTrA78iVIeaRI'
 var wmPlacesKey = 'AIzaSyDBNBysOcc4ZOhnnHVW_LSMSYBgn9p1YE4'

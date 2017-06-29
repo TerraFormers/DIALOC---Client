@@ -4,9 +4,59 @@ $(() => {
     headers: {
       'Accept': 'application/json, text/plain, */*',
       'Content-Type': 'application/json; charset=utf-8',
-      // 'Authorization': `${localStorage.token}`
+      'Authorization': `${localStorage.token}`
     }
   });
+  $('.hero').click((e) => {
+    e.stopPropagation()
+    // $('#modal2').modal('open')
+    console.log(e.target)
+  })
+  $('.lesser-fav').click((e) => {
+    e.stopPropagation()
+    // $('#modal2').modal('open')
+    console.log(e.target)
+  })
+
+  $('.rating').click((e) => {
+    e.stopPropagation()
+    console.log(e.target)
+
+  })
+  $.get('https://dialoc-server.herokuapp.com/location').then((res) => {
+      console.log(res)
+      return res
+    }).then((x) => addFavorites([
+      [
+        [39.7578, -105.0072],
+        [-44.7584, 192.2543]
+      ],
+      [
+        [50.7578, -105.0072],
+        [-50.7584, 192.1819]
+      ],
+      [
+        [70.7578, -115.0072],
+        [-30.7584, 200.1764]
+      ],
+      [
+        [70.7578, -115.0072],
+        [-30.7584, 200.1237]
+      ]
+    ])).then(() => initialize(
+      [
+        [39.7578, -105.0072],
+        [-44.7584, 192.2543]
+      ], [
+        [50.7578, -105.0072],
+        [-50.7584, 192.1819]
+      ], [
+        [70.7578, -115.0072],
+        [-30.7584, 200.1764]
+      ], [
+        [70.7578, -115.0072],
+        [-30.7584, 200.1237]
+      ]));
   // initialize()
   var wmStreetViewKey = 'AIzaSyCuPQR1KWE3uYIoml6bzBOTrA78iVIeaRI'
   var wmPlacesKey = 'AIzaSyDBNBysOcc4ZOhnnHVW_LSMSYBgn9p1YE4'
@@ -53,65 +103,11 @@ $(() => {
     //   ]
     // ])
 
-    $.get({
-      url: `https://dialoc-server.herokuapp.com/location`,
-      headers: {
-        'Authorization': localStorage.token}
-      }
-    })
-      .then((res) => {console.log(res)}).then(() => addFavorites([
-        [
-          [39.7578, -105.0072],
-          [-44.7584, 192.2543]
-        ],
-        [
-          [50.7578, -105.0072],
-          [-50.7584, 192.1819]
-        ],
-        [
-          [70.7578, -115.0072],
-          [-30.7584, 200.1764]
-        ],
-        [
-          [70.7578, -115.0072],
-          [-30.7584, 200.1237]
-        ]
-      ])).then(() => initialize(
-          [
-            [39.7578, -105.0072],
-            [-44.7584, 192.2543]
-          ],
-          [
-            [50.7578, -105.0072],
-            [-50.7584, 192.1819]
-          ],
-          [
-            [70.7578, -115.0072],
-            [-30.7584, 200.1764]
-          ],
-          [
-            [70.7578, -115.0072],
-            [-30.7584, 200.1237]
-          ]));
 
 
 
-    $('.hero').click((e)=>{
-      e.stopPropagation()
-      // $('#modal2').modal('open')
-      console.log(e.target)
-    })
-    $('.lesser-fav').click((e)=>{
-      e.stopPropagation()
-      // $('#modal2').modal('open')
-      console.log(e.target)
-    })
 
-    $('.rating').click((e)=>{
-      e.stopPropagation()
-      console.log(e.target)
 
-    })
   }
 
 
