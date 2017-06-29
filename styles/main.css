@@ -187,6 +187,14 @@ nav {
 
 /*favorites page*/
 
+.fav-main{
+  display: flex;
+}
+
+#favImage{
+  justify-content: center;
+}
+
 .hero .favorite-img {
   box-shadow: 0 0 20px white;
   border: 4px solid black;
@@ -226,6 +234,10 @@ nav {
 
 .hero-img-container:first-of-type {
   border-right: solid 1px white;
+}
+
+.hero-img-container:last-of-type {
+  border-left: solid 1px white;
 }
 
 .hero-container-master, .lesser-fav {
