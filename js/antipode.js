@@ -15,9 +15,14 @@ $(() => {
   var rpSatKey = 'AIzaSyAiB8Q6zW5qm1u2d5LKrT98udr4wbQKEuk'
   let currentURL = window.location.href;
   // let id = currentURL.slice(currentURL.indexOf("=") + 1)
-  let splitToken = localStorage.token.split('.')
+  if(localStorage.token){
 
-  const id = JSON.parse(atob(splitToken[1])).id
+    let splitToken = localStorage.token.split('.')
+    const id = JSON.parse(atob(splitToken[1])).id
+  }
+
+
+
 
   initialize()
   $('#btn-latlong').click(function() {
