@@ -1,0 +1,368 @@
+/*navigation & main structure*/
+
+@media(min-width:993px) {
+  .whole-title {
+    margin-left: 4em;
+  }
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.main-index {
+  position: relative;
+}
+
+.main-nav {
+  margin-bottom: -30px;
+}
+
+nav {
+  position: fixed;
+  z-index: 1000;
+}
+
+.menu-link {
+  min-width: 10px;
+}
+
+.title {
+  letter-spacing: 1em;
+}
+
+.side-nav-custom {
+  z-index: 1000;
+}
+
+.page-title {
+  margin-top: 1em;
+}
+
+.foota {
+  z-index: 5;
+  margin-top: -30px;
+}
+
+
+/*homepage*/
+
+#input-latlong {
+  padding: .5em;
+  border: 1px solid red;
+  margin: 0 3em 1em -1em;
+}
+
+.choose-btn {
+  z-index: 50;
+  position: fixed;
+  right: 50%;
+  top: 50%;
+}
+
+
+/*homepage antipode modal*/
+
+.modal-loc {
+  text-align: center;
+}
+
+#modal1, #modal2 {
+  width: 80vw;
+  height: 80vh;
+}
+
+.modal-half-contain {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 2;
+  /*height:100%;*/
+}
+
+.modal-half {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: 100%;
+}
+
+.modal-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.modal-original-section {
+  grid-column: 1/2;
+  border-right: solid 1px lightgrey;
+  height: 100%;
+  justify-items: stretch;
+}
+
+.modal-antipode-section {
+  grid-column: 2/3;
+  height: 100%;
+  justify-items: stretch;
+}
+
+.modal-img-sat, .modal-img-streetview {
+  object-fit: cover;
+  overflow: hidden;
+  width: 82%;
+  box-sizing: border-box;
+  border: 3px solid black;
+}
+
+.modal-streetview-original-contain {
+  grid-row: 2/3;
+}
+
+.modal-streetview-antipode-contain {
+  grid-row: 2/3
+}
+
+.address {
+  margin: 1em;
+}
+
+.add-fav-btn {
+  margin-left: 2em;
+}
+
+
+/*about page*/
+
+.main-about-info {
+  margin: 15% 5% 5% 5%;
+  box-shadow: 0 0 5px grey;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.main-about-info>h2 {
+  margin: 1em;
+}
+
+.main-about-text {
+  margin-bottom: 10%;
+}
+
+.team-info {
+  margin: 5%;
+  margin-bottom: 10%;
+  box-shadow: 0 0 5px grey;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.img-space {
+  margin: .5em;
+  object-fit: contain;
+  overflow: hidden;
+}
+
+.bio-img {
+  object-fit: contain;
+  width: 90%;
+}
+
+.name {
+  text-align: center;
+  padding: 1%;
+}
+
+.name:hover {
+  font-weight: bold;
+  color: red;
+}
+
+
+/*favorites page*/
+
+.fav-main{
+  display: flex;
+}
+
+#favImage{
+  justify-content: center;
+}
+
+.hero .favorite-img {
+  box-shadow: 0 0 20px white;
+  border: 4px solid black;
+}
+
+.favorite-img {
+  box-shadow: 0 0 5px grey;
+  /*margin:5%;*/
+  box-sizing: border-box;
+  border: 4px solid black;
+}
+
+.hero {
+  /*background: #fceabb;
+  background: -webkit-linear-gradient(to bottom, #f8b500, #fceabb);
+  background: linear-gradient(to bottom, #f8b500, #fceabb);*/
+  background: #FDFFEE;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #FDFFEE, #b3e5fc);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #FDFFEE, #b3e5fc);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  margin: 5%;
+  box-shadow: 0 0 2px yellow;
+  cursor:help;
+}
+
+.hero-container-master, .hero-container, .lesser-container, .lesser-fav, .lesser-actual-contain {
+  display: flex;
+  justify-content: space-around;
+}
+
+.hero-img-container, .lesser-img-container {
+  justify-content: space-around;
+  padding: 2%;
+}
+
+.hero-img-container:first-of-type {
+  border-right: solid 1px white;
+}
+
+.hero-img-container:last-of-type {
+  border-left: solid 1px white;
+}
+
+.hero-container-master, .lesser-fav {
+  flex-direction: column;
+}
+
+.hero-img {}
+
+.lesser-favs-master {}
+
+.lesser-img-container:first-of-type {
+  border-right: 1px solid lightgrey;
+}
+
+.lesser-fav {
+  /*margin: 5%;*/
+  margin: 5% 0;
+  box-shadow: 0 0 5px darkgrey;
+  box-sizing: content-box;
+  cursor:help;
+}
+
+.rating {
+  width: 20%;
+  align-self: center;
+  margin-bottom: 3%;
+  margin-top: -4%;
+  border-radius: 50%;
+  padding: 2%;
+}
+
+.rating, .upvote-count, .upvote-btn, .thumb{
+    cursor: cell;
+}
+
+.hero .rating {
+  border: 4px solid red;
+  box-shadow: 0 0 20px white;
+}
+
+.lesser-fav .rating {
+  border: 2px solid black;
+  box-shadow: 0 0 5px darkgrey;
+}
+
+.upvote-count {
+  display: inline-block;
+  vertical-align: bottom;
+  margin: 0;
+}
+
+.upvote-btn, .thumb {
+  vertical-align: middle;
+}
+
+
+/*misc*/
+
+.roundedBorder {
+  border-radius: 5px!important;
+}
+
+.hidden {
+  display: none;
+}
+
+.font-comforta {
+  font-family: 'Comfortaa', cursive;
+}
+
+.font-source {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.symbol {
+  line-height: 0;
+}
+
+.signup-btn, .favorite-btn {
+  margin-bottom: 2em;
+}
+
+.login-main {
+  margin-top: 50px;
+}
+
+
+/*webGL Earth stuff*/
+
+.cross {
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -8px auto auto -8px;
+  z-index: 10;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(/images/crosshairs2.png);
+  cursor:auto;
+}
+
+#earth_div1, #earth_div2 {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  cursor: move;
+}
+
+#earth_div_markers_user, #earth_div_markers_all {
+  margin-top: 15%;
+  border-radius: 50%;
+  height: 20em;
+  cursor:move;
+}
+
+#earth_div1 {
+  right: 50%;
+  top: 8px;
+}
+
+#earth_div2 {
+  left: 50%;
+}
