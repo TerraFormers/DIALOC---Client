@@ -1,4 +1,9 @@
+// let currentURL = window.location.href;
+// let id = currentURL.slice(currentURL.indexOf("=") + 1);
 $(() => {
+  const splitToken = localStorage.token.split('.')
+  const id = JSON.parse(atob(splitToken[1])).id
+  console.log(id)
   $.ajaxSetup({
     crossDomain: true,
     headers: {
@@ -14,8 +19,7 @@ $(() => {
   var wmGeocodingKey = 'AIzaSyDwVSMTSddT1ABkgp8YwzsH7qcqKms2U18'
   var rpSatKey = 'AIzaSyAiB8Q6zW5qm1u2d5LKrT98udr4wbQKEuk'
 
-  let currentURL = window.location.href;
-  let id = currentURL.slice(currentURL.indexOf("=") + 1);
+
 
   function antipode(coord) {
     return [-1 * coord[0], coord[1] - 180]
@@ -82,10 +86,9 @@ $(() => {
   $.get({
     url: `https://dialoc-server.herokuapp.com/user/${id}/location`,
     headers: {
-      Authorization: `${localStorage.token}`
+      Authorization: localStorage.token
     }
-  })
-    .then((res) => {console.log(res)}).then(() => addFavorites([
+  }).then((res) => {console.log(res)}).then(() => addFavorites([
       [
         [39.7578, -105.0072],
         [-44.7584, 192.2543]
