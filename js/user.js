@@ -9,7 +9,7 @@ $(() => {
   }
 
   function initialize(coords) {
-    const earth = new WE.map('earth_div_markers')
+    const earth = new WE.map('earth_div_markers_user')
     WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(earth)
 
     for (let coord of coords) {

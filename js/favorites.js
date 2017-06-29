@@ -33,46 +33,71 @@ $(() => {
         [-30.7584, 200.1237]
       ]
     ])
-  }
-  var count = 0;
-  let hero = "col s12 amber lighten-1 hero";
 
-  function isScrolledIntoView(allEl) {
-    for (let el of allEl) {
-      var elemTop = el.getBoundingClientRect().top;
-      var elemBottom = el.getBoundingClientRect().bottom;
-      var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
-      if (isVisible) {
-        console.log(el);
-      }
-    }
+    $('.hero').click((e)=>{
+      e.stopPropagation()
+      // $('#modal2').modal('open')
+      console.log(e.target)
+    })
+    $('.lesser-fav').click((e)=>{
+      e.stopPropagation()
+      // $('#modal2').modal('open')
+      console.log(e.target)
+    })
+
+    $('.rating').click((e)=>{
+      e.stopPropagation()
+      console.log(e.target)
+
+    })
   }
+
+
+
+  // $.get(`https://dialocserver-api.herokuapp.com/users/${id}/antipodes`)
+  //   .then((res) => addFavoriteImage([
+  //     [res[0].latitude, res[0].longitude],
+  //     antipode([res[0].latitude, res[0].longitude])
+  //   ])).then(() => addFavoriteImage([
+  //     [50.7578, 105.0072],
+  //     [-44.7584, 192.1819]
+  //   ])).then(() => initialize(
+  //     [
+  //       [39.7578, 105.0072],
+  //       [39.7578, -105.0072]
+  //     ]));
 
   function addFavorites(favorites) {
     for (let i in favorites) {
       addFavSatImages(favorites[i]).then((urls) => {
         let coords = favorites[i]
         if (i == 0) {
-          urls.forEach((url) => {
+          let heroContainer = $('<div class="hero-container"></div>')
+          $('.hero-container-master').prepend(heroContainer)
+          for(let i in urls) {
             $('.hero-container').append(`
               <div class="hero-img-container">
-                <img src="${url}" alt="" class="circle responsive-img favorite-img hero-img">
-                <p class="red-text white roundedBorder">${coords.join(', ')}</p>
+                <img src="${urls[i]}" alt="" class="circle responsive-img favorite-img hero-img">
+                <p class="white roundedBorder font-source" style="border: 1px solid red;">${coords[i].join(', ')}</p>
               </div>`)
-          })
+          }
+          // $('.hero-container-master').append($(`<div class="roundedBorder white font-source">user</div>`))
         } else {
-          let favsContainer = $('<div class=" lesser-fav container roundedBorder "></div>')
-          $('.favs-container').append(favsContainer)
-          urls.forEach((url) => {
-            favsContainer.append(`<div class="lesser-img-container">
-              <img src="${url}" alt="" class="circle responsive-img favorite-img hero-img">
-              <p class="red-text white roundedBorder">${coords.join(', ')}</p>
-            </div>`)
-          })
+          let contain = $('<div class="col s6" ></div>')
+          let favsContainer = $(`<div class="lesser-fav roundedBorder "><div class="white center  rating"><span class="center"><h5 class="upvote-count font-source">10</h5><a class="upvote-btn lesser-upvote-btn"><i class="material-icons small center black-text thumb">thumb_up</i></a></span></div></div></div>`)
+          let actualContainer = $(`<div class ="lesser-actual-contain"> `)
+          $('.lesser-favs-master').append(contain.append(favsContainer.prepend(actualContainer)))
+            for(let j in urls) {
+            actualContainer.append($(`<div class="lesser-img-container">
+              <img src="${urls[j]}" alt="" class="circle responsive-img favorite-img hero-img">
+              <p class="font-source">${coords[j].join(', ')}</p>
+            </div>`))
+          }
         }
       })
-    }
 
+
+    }
     function addFavSatImages(set) {
       console.log(set)
       return Promise.all([
@@ -80,7 +105,6 @@ $(() => {
         getSatURL(set[1])
       ])
     }
-
     function getSatURL(location) {
       return new Promise((resolve, reject) => {
         let e = {
@@ -95,65 +119,15 @@ $(() => {
       })
     }
   }
+})
 
-  function addFavoriteImage(homeCoords, hero = "col s5 amber lighten-5") {
-    let imgURL = [];
-    let maxZoom = 9;
-    for (let i = 0; i < 2; i++) {
-      let e = {
-        lat: homeCoords[i][0],
-        lng: homeCoords[i][1]
-      };
-      let maxZoomService = new google.maps.MaxZoomService();
-      maxZoomService.getMaxZoomAtLatLng(e, function(response) {
-        maxZoom = response.zoom;
-        imgURL.push(`https://maps.googleapis.com/maps/api/staticmap?maptype=satellite&center=${homeCoords[i].toString()}&zoom=${maxZoom}&size=350x350&key=AIzaSyAiB8Q6zW5qm1u2d5LKrT98udr4wbQKEuk`);
-        if (i == 1) {
-          $("#favImage").append(`
-            <a id="${count}" href="#modal1" class="roundedBorder lessImage ${hero} card-panel valign-wrapper activator">
-                <div class="col s6">
-                  <img src="${imgURL[0]}" alt="" class="circle responsive-img favorite-img">
-                  <p class="red-text white roundedBorder">${homeCoords[0]}</p>
-                </div>
-                <div class="col s6">
-                  <img src="${imgURL[1]}" alt="" class="circle responsive-img favorite-img">
-                  <p class="red-text white roundedBorder">${homeCoords[1]}</p>
-                </div>
-                <div class="col s12 white red-text roundedBorder"><span class="right"><a> <i class="material-icons white-text">thumb_up</i></a></span></div>
-              </a>`);
-        }
-      });
-    }
-    count++;
-    $('.modal').modal();
-    $(".activator").on("click", function() {
-      console.log(this);
-      $("#modalBody").html("");
-      $("#modalBody").html(`Enter Info Here`);
-    });
-  }
-  //
-  // addFavoriteImage([
-  //   [39.7578, -105.0072],
-  //   [-44.7584, 192.2543]
-  // ], hero)
-  // addFavoriteImage([
-  //   [50.7578, -105.0072],
-  //   [-50.7584, 192.1819]
-  // ])
-  // addFavoriteImage([
-  //   [70.7578, -115.0072],
-  //   [-30.7584, 200.1764]
-  // ])
-  // for (var i = 0; i < 11; i++) {
-  //
-  //   addFavoriteImage([
-  //     [70.7578, -115.0072],
-  //     [-30.7584, 200.1237]
-  //   ]);
-  // }
-  // $("body").scroll(console.log(isScrolledIntoView($(".lessImage"))));
-  // setTimeout(function() {
-  //   console.log(isScrolledIntoView($(".lessImage")));
-  // }, 2000)
-});
+// function isScrolledIntoView(allEl) {
+//   for (let el of allEl) {
+//     var elemTop = el.getBoundingClientRect().top;
+//     var elemBottom = el.getBoundingClientRect().bottom;
+//     var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+//     if (isVisible) {
+//       console.log(el);
+//     }
+//   }
+// }
