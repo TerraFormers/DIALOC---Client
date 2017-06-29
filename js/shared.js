@@ -1,10 +1,10 @@
-$.ajaxSetup({
-  crossDomain: true,
-  headers: {
-    'Accept': 'application/json, text/plain, */*',
-    'Content-Type': 'application/json; charset=utf-8'
-  }
-});
+// $.ajaxSetup({
+//   crossDomain: true,
+//   headers: {
+//     'Accept': 'application/json, text/plain, */*',
+//     'Content-Type': 'application/json; charset=utf-8'
+//   }
+// });
 
 
 // const splitToken = localStorage.token.split('.')
@@ -15,7 +15,7 @@ if (localStorage.token){
   $('.login-btn').click(()=>{
     delete localStorage.token
   })
-} 
+}
 
 var wmStreetViewKey = 'AIzaSyCuPQR1KWE3uYIoml6bzBOTrA78iVIeaRI'
 var wmPlacesKey = 'AIzaSyDBNBysOcc4ZOhnnHVW_LSMSYBgn9p1YE4'

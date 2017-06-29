@@ -1,13 +1,13 @@
 
 $(() => {
-  $.ajaxSetup({
-    crossDomain: true,
-    headers: {
-      'Accept': 'application/json, text/plain, */*',
-      'Content-Type': 'application/json; charset=utf-8',
-      // 'Authorization': `${localStorage.token}`
-    }
-  });
+  // $.ajaxSetup({
+  //   crossDomain: true,
+  //   headers: {
+  //     'Accept': 'application/json, text/plain, */*',
+  //     'Content-Type': 'application/json; charset=utf-8',
+  //     // 'Authorization': `${localStorage.token}`
+  //   }
+  // });
   var wmStreetViewKey = 'AIzaSyCuPQR1KWE3uYIoml6bzBOTrA78iVIeaRI'
   var wmPlacesKey = 'AIzaSyDBNBysOcc4ZOhnnHVW_LSMSYBgn9p1YE4'
   var wmRegMapsKey = 'AIzaSyBWwNKenoShzQRdzvj8Ifobvl4fYzR4kXs'
@@ -15,11 +15,7 @@ $(() => {
   var rpSatKey = 'AIzaSyAiB8Q6zW5qm1u2d5LKrT98udr4wbQKEuk'
   let currentURL = window.location.href;
   // let id = currentURL.slice(currentURL.indexOf("=") + 1)
-  if(localStorage.token){
 
-    let splitToken = localStorage.token.split('.')
-    const id = JSON.parse(atob(splitToken[1])).id
-  }
 
 
 
@@ -45,6 +41,10 @@ $(() => {
     update()
   })
   $('.add-fav-btn').click((e)=>{
+    
+      let splitToken = localStorage.token.split('.')
+      let id = JSON.parse(atob(splitToken[1])).id
+
     e.preventDefault()
     let coords = $("#current-location").text().split(', ')
     let req = {
