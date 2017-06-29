@@ -324,6 +324,15 @@ nav {
   margin-top: 50px;
 }
 
+#userName{
+  word-wrap: normal;
+  display: flex;
+  flex-wrap:wrap;
+  text-align: center;
+  justify-content: center;
+  margin:2%;
+}
+
 
 /*webGL Earth stuff*/
 
