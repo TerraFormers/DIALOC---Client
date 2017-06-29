@@ -84,6 +84,9 @@ $(() => {
     headers: {
       Authorization: `${localStorage.token}`
     }
+  }).then(res => {
+    $("#userName").text(res[0].email);
+    return res
   }).then((res) => res.reduce((acc, userObj) => {
   acc.push([userObj.latitude, userObj.longitude]);
   return acc;
