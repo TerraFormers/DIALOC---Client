@@ -1,5 +1,18 @@
 $(() => {
+  $.ajaxSetup({
+    crossDomain: true,
+    headers: {
+      'Accept': 'application/json, text/plain, */*',
+      'Content-Type': 'application/json; charset=utf-8',
+      // 'Authorization': `${localStorage.token}`
+    }
+  });
   // initialize()
+  var wmStreetViewKey = 'AIzaSyCuPQR1KWE3uYIoml6bzBOTrA78iVIeaRI'
+  var wmPlacesKey = 'AIzaSyDBNBysOcc4ZOhnnHVW_LSMSYBgn9p1YE4'
+  var wmRegMapsKey = 'AIzaSyBWwNKenoShzQRdzvj8Ifobvl4fYzR4kXs'
+  var wmGeocodingKey = 'AIzaSyDwVSMTSddT1ABkgp8YwzsH7qcqKms2U18'
+  var rpSatKey = 'AIzaSyAiB8Q6zW5qm1u2d5LKrT98udr4wbQKEuk'
 
   let currentURL = window.location.href;
   let id = currentURL.slice(currentURL.indexOf("=") + 1);
@@ -20,13 +33,59 @@ $(() => {
     }
 
     earth.setView([39.7578, -105.0072], .8);
+
+    // fetchGet(`https://dialoc-server.herokuapp.com/user/${id}/location`)
+    // .then((res) => {
+    //   console.log(res)
+    //   addFavorites([
+    //   [res[0].latitude, res[0].longitude],
+    //   antipode([res[0].latitude, res[0].longitude])
+    // ])}).then(() => addFavorites([
+    //   [
+    //     [39.7578, -105.0072],
+    //     [-44.7584, 192.2543]
+    //   ],
+    //   [
+    //     [50.7578, -105.0072],
+    //     [-50.7584, 192.1819]
+    //   ],
+    //   [
+    //     [70.7578, -115.0072],
+    //     [-30.7584, 200.1764]
+    //   ],
+    //   [
+    //     [70.7578, -115.0072],
+    //     [-30.7584, 200.1237]
+    //   ]
+    // ])).then(() => initialize(
+    //     [
+    //       [39.7578, -105.0072],
+    //       [-44.7584, 192.2543]
+    //     ],
+    //     [
+    //       [50.7578, -105.0072],
+    //       [-50.7584, 192.1819]
+    //     ],
+    //     [
+    //       [70.7578, -115.0072],
+    //       [-30.7584, 200.1764]
+    //     ],
+    //     [
+    //       [70.7578, -115.0072],
+    //       [-30.7584, 200.1237]
+    //     ]));
   }
 
-  $.get(`https://dialocserver-api.herokuapp.com/users/${id}/antipodes`)
-    .then((res) => addFavorites([
-      [res[0].latitude, res[0].longitude],
-      antipode([res[0].latitude, res[0].longitude])
-    ])).then(() => addFavorites([
+
+
+
+  $.get({
+    url: `https://dialoc-server.herokuapp.com/user/${id}/location`,
+    headers: {
+      Authorization: `${localStorage.token}`
+    }
+  })
+    .then((res) => {console.log(res)}).then(() => addFavorites([
       [
         [39.7578, -105.0072],
         [-44.7584, 192.2543]
