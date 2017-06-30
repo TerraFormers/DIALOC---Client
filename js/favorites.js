@@ -39,7 +39,8 @@ $(() => {
   }).then((info) => {
     $('.rating').show()
     return Promise.all([addFavorites(info[0], info[1]),
-    setMarkers(info[0])]).then(() => {
+      setMarkers(info[0])
+    ]).then(() => {
       $('.hero').click((e) => {
         e.stopPropagation()
         $('#modal2').modal('open')
@@ -62,17 +63,38 @@ $(() => {
         let info = JSON.parse($('.hero').attr('data-json'))
         let newRating = info.rating + 1
         console.log(newRating)
-        $.ajax({
-          url: `${databaseURL}location`,
-          method: "PUT",
-          data: {
-            "id": info.id
+        var settings = {
+          "async": true,
+          "crossDomain": true,
+          "url": `${databaseURL}location`,
+          "method": "PUT",
+          "headers": {
+            "content-type": "application/json",
+            "authorization": `${localStorage.token}`,
           },
-          success: (res) => {
-            console.log(res)
-            $('.upvote-count').reload()
-          }
-        })
+          "data": JSON.stringify({
+            "id": info.id
+          })
+        };
+
+        $.ajax(settings).done(function(response) {
+          console.log(response);
+
+        });
+        window.location.reload
+
+
+        // $.ajax({
+        //   url: `${databaseURL}location`,
+        //   method: "PUT",
+        //   data: {
+        //     "id": info.id
+        //   },
+        //   success: (res) => {
+        //     console.log(res)
+        //     $('.upvote-count').reload()
+        //   }
+        // })
       })
     })
   })
