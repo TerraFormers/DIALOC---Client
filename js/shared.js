@@ -69,7 +69,6 @@ function makePostReq(req) {
 }
 
   function addFavSatImages(set) {
-    console.log(set)
     return Promise.all([
       getSatURL(set[0]),
       getSatURL(set[1])
@@ -89,5 +88,5 @@ function makePostReq(req) {
         resolve(url)
       })
     })
-  
+
 }
