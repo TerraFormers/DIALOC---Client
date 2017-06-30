@@ -167,11 +167,12 @@ nav {
   margin: .5em;
   object-fit: contain;
   overflow: hidden;
+  margin-bottom:-4%;
 }
 
 .bio-img {
   object-fit: contain;
-  width: 90%;
+  width: 60%;
 }
 
 .name {
