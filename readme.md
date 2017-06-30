@@ -1,0 +1,3 @@
+For any point on Earth, there is one on exactly the other side - its antipode. DIALOC is a graphical interface for exploring these novel but existentially significant relationships.
+
+Using the WebGL Earth plugin, we developed a dual-globe interactive 3D interface for selecting pairs of opposite coordinates, searchable from the homepage, querying 4 different Google Maps APIs to retrieve more information about each.  Users can store their favorite antipodes and upvote them when they appear on the public roster of all favorited spots, in order of descending popularity. There is also a user page with all the antipodes personally favorited by a user. 
