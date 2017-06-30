@@ -260,6 +260,10 @@ nav {
   cursor:help;
 }
 
+.lesser-clickable{
+  cursor:help;
+}
+
 .rating {
   width: 20%;
   align-self: center;
@@ -267,7 +271,7 @@ nav {
   margin-top: -4%;
   border-radius: 50%;
   padding: 2%;
-  display: none;
+  /*display: none;*/
 }
 
 .rating, .upvote-count, .upvote-btn, .thumb{
