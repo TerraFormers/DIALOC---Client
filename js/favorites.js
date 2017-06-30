@@ -24,19 +24,29 @@ $(() => {
   $.get(`${databaseURL}location`).then((res) => {
     return res
   }).then((data) => {
+    let sortedData = data.sort((a, b) => {
+      return b.rating - a.rating
+    })
+    // console.log(sortedData)
+
+    function format(num) {
+      return parseFloat(num.toFixed(3))
+    }
+
     function antipode(coord) {
       let mapAntip = [-1 * coord[0], coord[1] - 180]
-      return mapAntip
+      return [format(mapAntip[0]), format(mapAntip[1])]
     }
     let inputCoords = []
-    for (let i of data) {
-      inputCoords.push([i.latitude, i.longitude])
+    for (let i of sortedData) {
+      inputCoords.push([format(i.latitude), format(i.longitude)])
     }
     let bothCoords = inputCoords.map((set) => {
       return [set, antipode(set)]
     })
     return [bothCoords, data]
   }).then((info) => {
+    // console.log(info)
     $('.rating').show()
     return Promise.all([addFavorites(info[0], info[1]),
       setMarkers(info[0])
@@ -44,24 +54,28 @@ $(() => {
       $('.hero').click((e) => {
         e.stopPropagation()
         $('#modal2').modal('open')
-        console.log(e.target)
-        console.log(JSON.parse($('.hero').attr('data-json')))
+        // console.log(e.target)
+        // console.log(JSON.parse($('.hero').attr('data-json')))
         let info = JSON.parse($('.hero').attr('data-json'))
         $('.modal-img-original').attr('src', $('.hero-img').first().attr('src'))
         $('.modal-img-antipode').attr('src', $('.hero-img').last().attr('src'))
+        $('.original-coords').text($('.hero-coords').first().text())
+        $('.antipode-coords').text($('.hero-coords').last().text())
 
       })
-      $('.lesser-fav').click((e) => {
+      $('.lesser-clicka').click((e) => {
         // e.stopPropagation()
         // $('#modal2').modal('open')
-        console.log(e)
+        console.log(e.target)
       })
 
       $('.rating').click((e) => {
         e.stopPropagation()
         console.log(e.target)
         let info = JSON.parse($('.hero').attr('data-json'))
-        let newRating = info.rating + 1
+        let rating = parseFloat($('.upvote-count').first().text())
+        // $('.upvote-count').first().text(`${data[i].rating}`)
+        let newRating = rating + 1
         console.log(newRating)
         var settings = {
           "async": true,
@@ -80,21 +94,11 @@ $(() => {
         $.ajax(settings).done(function(response) {
           console.log(response);
 
-        });
-        window.location.reload
-
-
-        // $.ajax({
-        //   url: `${databaseURL}location`,
-        //   method: "PUT",
-        //   data: {
-        //     "id": info.id
-        //   },
-        //   success: (res) => {
-        //     console.log(res)
-        //     $('.upvote-count').reload()
-        //   }
-        // })
+        }).then(
+          // window.location.reload()
+          // $('.rating').reload()
+          $('.upvote-count').first().text(newRating)
+        )
       })
     })
   })
@@ -108,10 +112,9 @@ $(() => {
   }
 
   function addFavorites(favorites, data) {
-    console.log(data)
-    console.log(favorites)
-    for (let i in favorites) {
 
+    for (let i in favorites) {
+      // console.log(data[i])
       addFavSatImages(favorites[i]).then((urls) => {
         let coords = favorites[i]
         let att = JSON.stringify(data[i])
@@ -125,19 +128,22 @@ $(() => {
             $('.hero-container').append(`
               <div class="hero-img-container">
                 <img src="${urls[i]}" alt="" class="circle responsive-img favorite-img hero-img">
-                <p class="white roundedBorder font-source" style="border: 1px solid red;">${coords[i].join(', ')}</p>
+                <p class="white roundedBorder font-source hero-coords" style="border: 1px solid red;">${coords[i].join(', ')}</p>
               </div>`)
           }
-          // $('.hero-container-master').append($(`<div class="roundedBorder white font-source">user</div>`))
         } else {
-          let contain = $('<div class="col s6" ></div>')
-          let favsContainer = $(`<div class="lesser-fav roundedBorder" data-json="${att}"><div data-json="${att}" class=" white center  rating"><span class="center"><h5 class="upvote-count font-source">${data[i].rating}</h5><a class="upvote-btn lesser-upvote-btn"><i class="material-icons small center black-text thumb">thumb_up</i></a></span></div></div></div>`)
+          // console.log(data[i])
+          let contain = $('<div class="col s6 lesser-clickable" ></div>')
+          let favsContainer = $(`<div class="lesser-fav roundedBorder" data-json="${att}">
+
+          <div data-json="${att}" class=" white center  rating"><span class="center"><h5 class="upvote-count font-source">${data[i].rating}</h5><br><a class="upvote-btn lesser-upvote-btn"><i class="material-icons small center black-text thumb">thumb_up</i></a></span></div></div></div>`)
+
           let actualContainer = $(`<div class ="lesser-actual-contain"> `)
           $('.lesser-favs-master').append(contain.append(favsContainer.prepend(actualContainer)))
           for (let j in urls) {
             actualContainer.append($(`<div class="lesser-img-container">
               <img src="${urls[j]}" alt="" class="circle responsive-img favorite-img hero-img">
-              <p class="font-source">${coords[j][0]}, <br>${coords[j][1]}</p>
+              <p class="font-source"> ${coords[j][0]},<br>${coords[j][1]}</p>
             </div>`))
           }
         }
