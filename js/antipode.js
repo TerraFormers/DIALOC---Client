@@ -16,7 +16,7 @@ $(() => {
   let currentURL = window.location.href;
   // let id = currentURL.slice(currentURL.indexOf("=") + 1)
 
-
+$('.add-fav-btn').click()
 
 
 
@@ -41,7 +41,7 @@ $(() => {
     update()
   })
   $('.add-fav-btn').click((e)=>{
-    
+
       let splitToken = localStorage.token.split('.')
       let id = JSON.parse(atob(splitToken[1])).id
 
